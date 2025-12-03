@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { SolutionCardProps } from '../types';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const solutions: SolutionCardProps[] = [
   {
@@ -59,9 +60,9 @@ const SolutionCard: React.FC<{ data: SolutionCardProps }> = ({ data }) => {
           ))}
         </ul>
 
-        <button className="flex items-center gap-2 uppercase tracking-widest text-xs font-bold hover:text-sage-300 transition-colors">
+        <Link to="/reset" className="flex items-center gap-2 uppercase tracking-widest text-xs font-bold hover:text-sage-300 transition-colors">
           Learn More <ArrowRight className="w-4 h-4" />
-        </button>
+        </Link>
       </div>
       
       <div className="absolute top-8 right-8 text-white/20 font-serif text-6xl">
@@ -90,9 +91,9 @@ const Solution: React.FC = () => {
           <p className="text-xl text-stone-500 font-light leading-relaxed mb-8">
             A comprehensive ecosystem to align your environment with your quality of care.
           </p>
-          <button className="w-fit bg-stone-900 text-white px-8 py-3 rounded-full hover:bg-sage-600 transition-colors">
+          <Link to="/reset" className="w-fit bg-stone-900 text-white px-8 py-3 rounded-full hover:bg-sage-600 transition-colors">
             Explore Ecosystem
-          </button>
+          </Link>
         </div>
 
         {/* Scrolling Cards */}

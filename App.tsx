@@ -11,6 +11,7 @@ import LeadMagnets from './components/LeadMagnets';
 import Footer from './components/Footer';
 import CustomCursor from './components/ui/CustomCursor';
 import PhilosophyPage from './pages/PhilosophyPage';
+import ResetPage from './pages/ResetPage';
 
 const LandingPage: React.FC = () => {
   return (
@@ -35,6 +36,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/philosophy" element={<PhilosophyPage />} />
+        <Route path="/reset" element={<ResetPage />} />
       </Routes>
     </Router>
   );

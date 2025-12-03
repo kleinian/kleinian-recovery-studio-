@@ -11,10 +11,15 @@ const Footer: React.FC = () => {
             Ready to build what <br/> does not yet exist?
           </h2>
           
-          <button className="group flex items-center gap-4 text-2xl md:text-3xl hover:text-sage-400 transition-colors">
+          <a 
+            href="https://cal.com/kleinian/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group w-fit flex items-center gap-4 text-2xl md:text-3xl hover:text-sage-400 transition-colors"
+          >
             <span className="border-b border-white pb-1 group-hover:border-sage-400 transition-colors">Book Free Consultation</span>
             <ArrowUpRight className="w-8 h-8 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </a>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-end mt-24 pt-12 border-t border-stone-900">

@@ -40,13 +40,16 @@ const Hero: React.FC = () => {
               delay={5}
             />
             
-            <motion.button
+            <motion.a
+              href="https://cal.com/kleinian/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-stone-900 px-8 py-4 rounded-full font-semibold uppercase tracking-wider text-xs md:text-sm hover:bg-sage-200 transition-colors duration-300"
+              className="inline-block bg-white text-stone-900 px-8 py-4 rounded-full font-semibold uppercase tracking-wider text-xs md:text-sm hover:bg-sage-200 transition-colors duration-300"
             >
               Book Your Free Consultation
-            </motion.button>
+            </motion.a>
           </div>
         </div>
       </div>

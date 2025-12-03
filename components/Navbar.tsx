@@ -9,10 +9,6 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
-  // Helper to determine text color based on background (simplified logic)
-  // On landing page, hero is dark (white text). On philosophy page, hero is light (needs dark text initially).
-  // However, sticky nav is mix-blend-difference so it handles itself mostly.
-  
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
     if (latest > previous && latest > 150) {
@@ -23,14 +19,6 @@ const Navbar: React.FC = () => {
   });
 
   const isHome = location.pathname === "/";
-
-  // Function to handle hash scrolling when on different pages
-  const scrollToHash = (hash: string) => {
-    const element = document.getElementById(hash);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <>
@@ -57,13 +45,12 @@ const Navbar: React.FC = () => {
         <div className="hidden md:flex gap-8 items-center text-sm font-medium tracking-wide">
           <Link to="/philosophy" className="hover:opacity-60 transition-opacity">Philosophy</Link>
           
+          <Link to="/reset" className="hover:opacity-60 transition-opacity">The Reset</Link>
+
           {isHome ? (
-            <>
-              <a href="#solution" className="hover:opacity-60 transition-opacity">The Reset</a>
-              <a href="#process" className="hover:opacity-60 transition-opacity">Process</a>
-            </>
+            <a href="#process" className="hover:opacity-60 transition-opacity">Process</a>
           ) : (
-             <Link to="/#solution" className="hover:opacity-60 transition-opacity">The Reset</Link>
+            <Link to="/#process" className="hover:opacity-60 transition-opacity">Process</Link>
           )}
 
           <a 
@@ -84,7 +71,7 @@ const Navbar: React.FC = () => {
         animate={{ opacity: isOpen ? 1 : 0, pointerEvents: isOpen ? 'auto' : 'none' }}
       >
           <Link to="/philosophy" onClick={() => setIsOpen(false)} className="text-2xl text-white font-serif italic">Philosophy</Link>
-          <a href="/#solution" onClick={() => setIsOpen(false)} className="text-2xl text-white font-serif italic">The Reset</a>
+          <Link to="/reset" onClick={() => setIsOpen(false)} className="text-2xl text-white font-serif italic">The Reset</Link>
           <a href="/#process" onClick={() => setIsOpen(false)} className="text-2xl text-white font-serif italic">Process</a>
           <a href="https://cal.com/kleinian/30min" target="_blank" rel="noopener noreferrer" className="mt-8 border border-white/30 px-8 py-3 rounded-full text-white hover:bg-white hover:text-black transition-all">
             Book Consultation
