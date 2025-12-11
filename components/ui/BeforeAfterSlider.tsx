@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MoveHorizontal } from 'lucide-react';
+import { MoveHorizontal, ImageOff } from 'lucide-react';
 
 interface BeforeAfterSliderProps {
   beforeImage: string;
@@ -10,6 +10,7 @@ interface BeforeAfterSliderProps {
 const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImage, afterImage, className = '' }) => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
+  const [imageError, setImageError] = useState<{before: boolean, after: boolean}>({ before: false, after: false });
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleMove = (clientX: number) => {
@@ -55,28 +56,45 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImage, afte
       onMouseDown={(e) => { handleMove(e.clientX); setIsDragging(true); }}
       onTouchStart={(e) => { handleMove(e.touches[0].clientX); setIsDragging(true); }}
     >
-      <div className="relative w-full h-full min-h-[300px]">
+      <div className="relative w-full h-full min-h-[200px]">
         {/* Before Image (Background) */}
-        <img 
-          src={beforeImage} 
-          alt="Before" 
-          className="absolute inset-0 w-full h-full object-cover grayscale"
-          draggable={false}
-        />
-        <div className="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 text-xs font-bold tracking-widest uppercase rounded z-20">Before</div>
+        {imageError.before ? (
+           <div className="absolute inset-0 w-full h-full bg-stone-200 flex flex-col items-center justify-center text-stone-400">
+              <ImageOff className="w-8 h-8 mb-2 opacity-50" />
+              <span className="text-xs font-mono uppercase tracking-widest">Before Image</span>
+           </div>
+        ) : (
+          <img 
+            src={beforeImage} 
+            alt="Before" 
+            className="absolute inset-0 w-full h-full object-cover object-top grayscale"
+            draggable={false}
+            onError={() => setImageError(prev => ({ ...prev, before: true }))}
+          />
+        )}
+        
+        <div className="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 text-xs font-bold tracking-widest uppercase rounded z-20 backdrop-blur-md">Before</div>
 
         {/* After Image (Foreground - Clipped) */}
         <div 
           className="absolute inset-0 w-full h-full overflow-hidden"
           style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
         >
-          <img 
-            src={afterImage} 
-            alt="After" 
-            className="absolute inset-0 w-full h-full object-cover"
-            draggable={false}
-          />
-          <div className="absolute top-4 right-4 bg-sage-500/80 text-white px-3 py-1 text-xs font-bold tracking-widest uppercase rounded z-20">After</div>
+          {imageError.after ? (
+             <div className="absolute inset-0 w-full h-full bg-sage-100 flex flex-col items-center justify-center text-sage-600">
+                <ImageOff className="w-8 h-8 mb-2 opacity-50" />
+                <span className="text-xs font-mono uppercase tracking-widest">After Image</span>
+             </div>
+          ) : (
+            <img 
+              src={afterImage} 
+              alt="After" 
+              className="absolute inset-0 w-full h-full object-cover object-top"
+              draggable={false}
+              onError={() => setImageError(prev => ({ ...prev, after: true }))}
+            />
+          )}
+          <div className="absolute top-4 right-4 bg-sage-500/80 text-white px-3 py-1 text-xs font-bold tracking-widest uppercase rounded z-20 backdrop-blur-md">After</div>
         </div>
 
         {/* Slider Handle */}
