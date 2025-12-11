@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
@@ -27,7 +26,7 @@ const Navbar: React.FC = () => {
         }}
         animate={hidden ? "hidden" : "visible"}
         transition={{ duration: 0.35, ease: "easeInOut" }}
-        className="fixed top-0 left-0 w-full z-50 px-6 py-6 md:px-12 flex justify-between items-center mix-blend-difference text-white"
+        className={`fixed top-0 left-0 w-full z-50 px-6 py-6 md:px-12 flex justify-between items-center transition-colors duration-300 ${isOpen ? 'text-white' : 'text-stone-800'}`}
       >
         <Link to="/" className="font-sans font-bold tracking-widest text-lg md:text-xl uppercase z-50">
           Kleinian<span className="font-light opacity-70">.Studio</span>
@@ -45,7 +44,7 @@ const Navbar: React.FC = () => {
             href="https://cal.com/kleinian/30min"
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-white/30 px-6 py-2 rounded-full hover:bg-white hover:text-black transition-all duration-300"
+            className="border border-stone-800/30 px-6 py-2 rounded-full hover:bg-stone-800 hover:text-white transition-all duration-300"
           >
             Book Consultation
           </a>

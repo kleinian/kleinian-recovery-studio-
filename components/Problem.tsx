@@ -10,13 +10,25 @@ const Problem: React.FC = () => {
       
       <div className="relative z-10 w-full max-w-7xl mx-auto h-full flex flex-col justify-center">
         {/* Header */}
-        <div className="mb-12">
-            <span className="block text-xs font-bold tracking-[0.2em] uppercase text-sage-600 mb-6">The Results</span>
-            <RevealText 
-              text="Rehabilitate your digital identity"
-              tag="h2"
-              className="text-4xl md:text-6xl font-sans font-light text-stone-900 tracking-tight"
-            />
+        <div className="mb-8 lg:mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+            <div>
+                <span className="block text-xs font-bold tracking-[0.2em] uppercase text-sage-600 mb-4 lg:mb-6">The Results</span>
+                <RevealText 
+                  text="Rehabilitate your digital identity"
+                  tag="h2"
+                  className="text-4xl md:text-6xl font-sans font-light text-stone-900 tracking-tight"
+                />
+            </div>
+            
+            {/* Desktop CTA Button */}
+            <a
+              href="https://cal.com/kleinian/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden lg:inline-flex items-center justify-center bg-[#341CFF] text-white px-8 py-4 rounded-full font-semibold uppercase tracking-wider text-xs hover:bg-blue-700 transition-colors duration-300 flex-shrink-0"
+            >
+              Book Consultation
+            </a>
         </div>
 
         {/* Content Layout - Bento / 50-50 Split */}
@@ -65,11 +77,21 @@ const Problem: React.FC = () => {
              </div>
           </div>
 
+          {/* Mobile CTA Button (Hidden on Desktop) */}
+          <a
+              href="https://cal.com/kleinian/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lg:hidden w-full inline-flex items-center justify-center bg-[#341CFF] text-white px-8 py-4 rounded-full font-semibold uppercase tracking-wider text-xs hover:bg-blue-700 transition-colors duration-300"
+            >
+              Book Consultation
+          </a>
+
           {/* Right: Before/After Slider */}
-          <div className="relative h-[400px] lg:h-full rounded-3xl overflow-hidden shadow-2xl mt-8 lg:mt-0 border border-white/50">
+          <div className="relative h-[400px] lg:h-full rounded-3xl overflow-hidden shadow-2xl mt-0 border border-white/50">
             <BeforeAfterSlider 
-              beforeImage="https://images.unsplash.com/photo-1516550893923-42d28e5677af?q=80&w=2072&auto=format&fit=crop"
-              afterImage="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2832&auto=format&fit=crop"
+              beforeImage="/iris-before.png"
+              afterImage="/iris-redesign.png"
             />
           </div>
         </div>
