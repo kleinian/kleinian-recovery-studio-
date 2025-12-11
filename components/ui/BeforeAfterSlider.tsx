@@ -49,13 +49,13 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImage, afte
   return (
     <div 
       ref={containerRef}
-      className={`relative w-full overflow-hidden select-none group cursor-ew-resize ${className}`}
+      className={`relative w-full h-full overflow-hidden select-none group cursor-ew-resize ${className}`}
       onMouseMove={onMouseMove}
       onTouchMove={onTouchMove}
       onMouseDown={(e) => { handleMove(e.clientX); setIsDragging(true); }}
       onTouchStart={(e) => { handleMove(e.touches[0].clientX); setIsDragging(true); }}
     >
-      <div className="relative w-full h-[500px] md:h-[600px]">
+      <div className="relative w-full h-full min-h-[300px]">
         {/* Before Image (Background) */}
         <img 
           src={beforeImage} 
@@ -63,7 +63,7 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImage, afte
           className="absolute inset-0 w-full h-full object-cover grayscale"
           draggable={false}
         />
-        <div className="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 text-xs font-bold tracking-widest uppercase rounded">Before</div>
+        <div className="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 text-xs font-bold tracking-widest uppercase rounded z-20">Before</div>
 
         {/* After Image (Foreground - Clipped) */}
         <div 
@@ -76,7 +76,7 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImage, afte
             className="absolute inset-0 w-full h-full object-cover"
             draggable={false}
           />
-          <div className="absolute top-4 right-4 bg-sage-500/80 text-white px-3 py-1 text-xs font-bold tracking-widest uppercase rounded">After</div>
+          <div className="absolute top-4 right-4 bg-sage-500/80 text-white px-3 py-1 text-xs font-bold tracking-widest uppercase rounded z-20">After</div>
         </div>
 
         {/* Slider Handle */}

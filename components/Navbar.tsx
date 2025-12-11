@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
@@ -17,8 +17,6 @@ const Navbar: React.FC = () => {
       setHidden(false);
     }
   });
-
-  const isHome = location.pathname === "/";
 
   return (
     <>
@@ -43,16 +41,6 @@ const Navbar: React.FC = () => {
         </button>
 
         <div className="hidden md:flex gap-8 items-center text-sm font-medium tracking-wide">
-          <Link to="/philosophy" className="hover:opacity-60 transition-opacity">Philosophy</Link>
-          
-          <Link to="/reset" className="hover:opacity-60 transition-opacity">The Reset</Link>
-
-          {isHome ? (
-            <a href="#process" className="hover:opacity-60 transition-opacity">Process</a>
-          ) : (
-            <Link to="/#process" className="hover:opacity-60 transition-opacity">Process</Link>
-          )}
-
           <a 
             href="https://cal.com/kleinian/30min"
             target="_blank"
@@ -70,9 +58,6 @@ const Navbar: React.FC = () => {
         initial={{ opacity: 0, pointerEvents: 'none' }}
         animate={{ opacity: isOpen ? 1 : 0, pointerEvents: isOpen ? 'auto' : 'none' }}
       >
-          <Link to="/philosophy" onClick={() => setIsOpen(false)} className="text-2xl text-white font-serif italic">Philosophy</Link>
-          <Link to="/reset" onClick={() => setIsOpen(false)} className="text-2xl text-white font-serif italic">The Reset</Link>
-          <a href="/#process" onClick={() => setIsOpen(false)} className="text-2xl text-white font-serif italic">Process</a>
           <a href="https://cal.com/kleinian/30min" target="_blank" rel="noopener noreferrer" className="mt-8 border border-white/30 px-8 py-3 rounded-full text-white hover:bg-white hover:text-black transition-all">
             Book Consultation
           </a>
