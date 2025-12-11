@@ -90,9 +90,9 @@ const Problem: React.FC = () => {
           {/* Right: Before/After Slider */}
           <div className="relative w-full aspect-video lg:aspect-auto lg:h-full rounded-3xl overflow-hidden shadow-2xl mt-0 border border-white/50 bg-stone-200">
             <BeforeAfterSlider 
-              beforeImage="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=60&w=800"
-              afterImage="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=60&w=800"
-            />
+  beforeImage="/before-design.jpg" 
+  afterImage="/after-design.jpg" 
+/> 
           </div>
         </div>
       </div>
