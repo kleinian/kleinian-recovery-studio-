@@ -15,6 +15,7 @@
             fontFamily: {
               sans: ['Manrope', 'sans-serif'],
               serif: ['Cormorant Garamond', 'serif'],
+              mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", "monospace"],
             },
             colors: {
               sage: {
@@ -54,6 +55,12 @@
       .no-scrollbar {
           -ms-overflow-style: none;  /* IE and Edge */
           scrollbar-width: none;  /* Firefox */
+      }
+      html, body, #root {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
       }
       html {
         scroll-behavior: smooth;

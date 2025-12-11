@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
